@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Two Month Anniversary</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Jost:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blush:#fff1f6; --pink:#f48fb1; --pink2:#ec6a9a; --rose:#b0215a; --plum:#4a1530; --gold:#e3b04b;
+  --script:'Pinyon Script',cursive; --serif:'Cormorant Garamond',Georgia,serif; --sans:'Jost',system-ui,sans-serif;
+  --kaca:rgba(255,255,255,.58); --garis:rgba(255,255,255,.85); --bayang:0 18px 50px rgba(176,33,90,.22);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--plum);min-height:100vh;overflow-x:hidden;
+  background:radial-gradient(circle at 15% 10%,#fff 0,transparent 35%),
+             linear-gradient(160deg,#ffe4ee 0%,#ffc4da 52%,#f9a3c4 100%) fixed}
+
+/* ===== NAVIGASI ===== */
+.nav{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;justify-content:space-between;align-items:center;
+  padding:12px clamp(18px,4vw,48px);background:rgba(255,241,246,.65);backdrop-filter:blur(12px);border-bottom:1px solid var(--garis)}
+.nav .merek{font-family:var(--script);font-size:1.9rem;color:var(--rose);text-decoration:none}
+.nav div{display:flex;gap:24px}
+.nav div a{color:var(--plum);text-decoration:none;font-weight:500;font-size:.95rem;padding:4px 2px;border-bottom:2px solid transparent;transition:border-color .2s,color .2s}
+.nav div a:hover{color:var(--rose);border-color:var(--pink2)}
+
+/* ===== SISTEM HALAMAN (murni CSS :target) ===== */
+.page{display:none;min-height:100vh;padding:110px 20px 70px;flex-direction:column;align-items:center;position:relative;z-index:2}
+.page:target,body:not(:has(.page:target)) #home{display:flex;animation:masuk .8s ease both}
+@keyframes masuk{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+
+/* ===== FOTO JATUH ===== */
+.hujan{position:fixed;inset:0;z-index:1;pointer-events:none;overflow:hidden;transition:opacity .6s}
+body:has(#surat:target) .hujan,body:has(#bunga:target) .hujan{opacity:.3}
+.jatuh{position:absolute;top:-260px;left:var(--x);width:var(--w);animation:turun var(--d) linear var(--t) infinite}
+.jatuh .foto-j{aspect-ratio:4/5;background:#fff;padding:6px 6px 22px;border-radius:3px;box-shadow:0 10px 24px rgba(176,33,90,.3);
+  animation:ayun 3.4s ease-in-out var(--t) infinite alternate;position:relative}
+.foto-j::before{content:"♡";position:absolute;inset:6px 6px 22px;display:grid;place-items:center;font-size:1.8rem;color:#fff;
+  background:linear-gradient(135deg,#f9b4cd,#ec6a9a)}
+.foto-j::after{content:"";position:absolute;inset:6px 6px 22px;background:var(--img) center/cover no-repeat}
+@keyframes turun{to{transform:translateY(calc(100vh + 320px))}}
+@keyframes ayun{from{transform:translateX(-22px) rotate(calc(var(--r) * -1))}to{transform:translateX(22px) rotate(var(--r))}}
+.jatuh:nth-child(1){--x:2%;--w:118px;--d:15s;--t:-2s;--r:10deg;--img:url("foto%20(1).jpg")}
+.jatuh:nth-child(2){--x:10%;--w:92px;--d:19s;--t:-11s;--r:14deg;--img:url("foto%20(2).jpg")}
+.jatuh:nth-child(3){--x:18%;--w:130px;--d:17s;--t:-6s;--r:8deg;--img:url("foto%20(3).jpg")}
+.jatuh:nth-child(4){--x:27%;--w:100px;--d:21s;--t:-15s;--r:12deg;--img:url("foto%20(4).jpg")}
+.jatuh:nth-child(5){--x:35%;--w:124px;--d:16s;--t:-9s;--r:9deg;--img:url("foto%20(5).jpg")}
+.jatuh:nth-child(6){--x:43%;--w:86px;--d:23s;--t:-18s;--r:15deg;--img:url("foto%20(6).jpg")}
+.jatuh:nth-child(7){--x:51%;--w:128px;--d:18s;--t:-4s;--r:10deg;--img:url("foto%20(7).jpg")}
+.jatuh:nth-child(8){--x:59%;--w:96px;--d:20s;--t:-13s;--r:13deg;--img:url("foto%20(8).jpg")}
+.jatuh:nth-child(9){--x:67%;--w:120px;--d:14s;--t:-8s;--r:11deg;--img:url("foto%20(9).jpg")}
+.jatuh:nth-child(10){--x:75%;--w:104px;--d:22s;--t:-20s;--r:8deg;--img:url("foto%20(10).jpg")}
+.jatuh:nth-child(11){--x:83%;--w:132px;--d:17s;--t:-1s;--r:14deg;--img:url("foto%20(11).jpg")}
+.jatuh:nth-child(12){--x:91%;--w:90px;--d:19s;--t:-16s;--r:12deg;--img:url("foto%20(12).jpg")}
+
+/* ===== UMUM ===== */
+.kaca{background:var(--kaca);backdrop-filter:blur(14px);border:1px solid var(--garis);border-radius:28px;box-shadow:var(--bayang)}
+.judul-halaman{font-family:var(--serif);font-weight:600;font-size:clamp(2.2rem,5vw,3.4rem);color:var(--rose);text-align:center;line-height:1.1}
+.sub{font-size:1.05rem;color:#7a3a55;text-align:center;margin:10px 0 40px;max-width:520px}
+.tombol{display:inline-block;padding:14px 34px;border-radius:999px;background:linear-gradient(135deg,var(--pink2),var(--rose));color:#fff;
+  font-weight:500;letter-spacing:.02em;text-decoration:none;box-shadow:0 10px 24px rgba(176,33,90,.35);transition:transform .2s,box-shadow .2s}
+.tombol:hover{transform:translateY(-3px);box-shadow:0 14px 28px rgba(176,33,90,.42)}
+.tombol.lembut{background:rgba(255,255,255,.75);color:var(--rose);box-shadow:0 6px 16px rgba(176,33,90,.18)}
+.tombol:focus-visible,.nav a:focus-visible,.kartu-pilih:focus-visible{outline:3px solid var(--rose);outline-offset:4px}
+.kembali{margin-top:44px}
+
+/* ===== BERANDA ===== */
+#home{justify-content:center;text-align:center}
+.hero{padding:clamp(34px,6vw,64px) clamp(26px,6vw,84px);max-width:760px}
+.hero .salam{font-size:1.05rem;color:#7a3a55}
+.hero h1{margin:8px 0 18px;line-height:.95}
+.hero h1 .s1{display:block;font-family:var(--script);font-weight:400;font-size:clamp(3.6rem,10vw,7rem);color:var(--rose)}
+.hero h1 .s2{display:block;font-family:var(--serif);font-weight:600;font-size:clamp(2.2rem,6vw,4rem);color:var(--plum);letter-spacing:.04em}
+.hero p.isi{font-family:var(--serif);font-style:italic;font-size:1.35rem;line-height:1.5;margin-bottom:30px;color:#7a3a55}
+.hero .hati{display:block;margin:0 auto 20px;width:44px;color:var(--pink2)}
+
+/* ===== PILIHAN ===== */
+#pilih{justify-content:center}
+.deret{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px;width:min(1000px,100%)}
+.kartu-pilih{display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;padding:34px 24px 30px;text-decoration:none;color:var(--plum);
+  transition:transform .3s,box-shadow .3s}
+.kartu-pilih:hover{transform:translateY(-10px);box-shadow:0 26px 60px rgba(176,33,90,.32)}
+.kartu-pilih svg{width:130px;height:130px;margin-bottom:6px;filter:drop-shadow(0 8px 10px rgba(176,33,90,.25))}
+.kartu-pilih h3{font-family:var(--serif);font-size:1.9rem;color:var(--rose)}
+.kartu-pilih p{font-size:.98rem;color:#7a3a55;line-height:1.5}
+
+/* ===== SURAT ===== */
+.kertas{position:relative;width:min(660px,100%);padding:clamp(34px,6vw,60px);background:
+  repeating-linear-gradient(180deg,transparent 0 35px,rgba(176,33,90,.1) 35px 36px),
+  linear-gradient(160deg,#fffdf8,#fff0f4);border-radius:6px;box-shadow:var(--bayang);font-family:var(--serif);font-size:clamp(1.15rem,2vw,1.32rem);line-height:1.8}
+.kertas::before{content:"";position:absolute;top:-14px;left:50%;width:120px;height:28px;transform:translateX(-50%) rotate(-2deg);background:rgba(244,143,177,.65)}
+.kertas h3{font-family:var(--script);font-weight:400;font-size:2.7rem;color:var(--rose);margin-bottom:14px}
+.kertas p{margin-bottom:20px}
+#surat:target .kertas p{animation:masuk .9s ease both}
+#surat:target .kertas p:nth-of-type(1){animation-delay:.3s}
+#surat:target .kertas p:nth-of-type(2){animation-delay:.9s}
+#surat:target .kertas p:nth-of-type(3){animation-delay:1.5s}
+#surat:target .kertas p:nth-of-type(4){animation-delay:2.1s}
+#surat:target .kertas p:nth-of-type(5){animation-delay:2.7s}
+.kertas .ttd{font-family:var(--script);font-size:2.2rem;color:var(--rose);text-align:right;margin:0}
+.polaroid{position:relative;width:150px;aspect-ratio:4/5;background:#fff;padding:7px 7px 28px;box-shadow:0 10px 22px rgba(176,33,90,.3)}
+.polaroid::before{content:"♡ foto kita";position:absolute;inset:7px 7px 28px;display:grid;place-items:center;text-align:center;
+  background:linear-gradient(135deg,#fbc3d7,#f08fb2);color:#fff;font-family:var(--serif);font-size:1.1rem}
+.polaroid::after{content:"";position:absolute;inset:7px 7px 28px;background:var(--img) center/cover no-repeat}
+.polaroid i{position:absolute;top:-11px;left:50%;width:60px;height:20px;transform:translateX(-50%) rotate(-3deg);background:rgba(244,143,177,.7);z-index:2}
+.p1{--img:url("foto%20(1).jpg");transform:rotate(5deg)}.p2{--img:url("foto%20(2).jpg");transform:rotate(-4deg)}.p3{--img:url("foto%20(3).jpg");transform:rotate(3deg)}
+.deret-foto{display:flex;gap:26px;flex-wrap:wrap;justify-content:center;margin-top:36px}
+@media(min-width:1050px){.deret-foto{position:absolute;right:max(20px,calc(50% - 570px));top:130px;flex-direction:column;margin:0;gap:36px}}
+
+/* ===== BUNGA ===== */
+.bunga-grid{display:grid;grid-template-columns:minmax(260px,380px) 1fr;gap:34px;align-items:center;width:min(1060px,100%)}
+.buket{padding:26px 18px 20px;text-align:center}
+.buket svg{width:100%;height:auto;display:block}
+.buket .judul{font-family:var(--script);font-size:2.6rem;color:var(--rose);line-height:1.1;margin-top:6px}
+.arti{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.arti-item{padding:18px 20px;display:flex;gap:14px;align-items:flex-start;transition:transform .25s}
+.arti-item:hover{transform:translateY(-4px)}
+.arti-item svg{flex:none;width:46px;height:46px}
+.arti-item h4{font-family:var(--serif);font-size:1.4rem;color:var(--rose);margin-bottom:2px}
+.arti-item p{font-size:.95rem;line-height:1.55;color:#6b3550}
+.kelopak{position:fixed;top:-30px;width:14px;height:18px;background:var(--pink);border-radius:80% 0 80% 0;opacity:.8;pointer-events:none;display:none;z-index:3;animation:gugur linear infinite}
+#bunga:target .kelopak{display:block}
+@keyframes gugur{to{transform:translateY(110vh) rotate(540deg) translateX(40px)}}
+.kelopak:nth-of-type(1){left:10%;animation-duration:9s}.kelopak:nth-of-type(2){left:32%;animation-duration:12s;animation-delay:-4s}
+.kelopak:nth-of-type(3){left:55%;animation-duration:10s;animation-delay:-7s}.kelopak:nth-of-type(4){left:78%;animation-duration:13s;animation-delay:-2s}
+
+/* ===== LAGU ===== */
+.panggung{position:relative;width:min(780px,100%);min-height:330px;margin-top:6px}
+.piringan{position:absolute;left:0;top:10px;width:min(330px,60vw);aspect-ratio:1;border-radius:50%;animation:putar 7s linear infinite;
+  background:radial-gradient(circle,transparent 0 24%,#1a0d14 24.5%),repeating-radial-gradient(circle,#1a0d14 0 3px,#3a1a2a 4px 5px);box-shadow:0 14px 30px rgba(74,21,48,.5)}
+.piringan::after{content:"♥";position:absolute;inset:33%;border-radius:50%;background:radial-gradient(circle,#ffd0e0,var(--pink2));display:grid;place-items:center;color:var(--rose);font-size:1.6rem}
+@keyframes putar{to{transform:rotate(360deg)}}
+.video{margin-left:min(180px,26vw);padding-top:min(110px,16vw);width:calc(100% - min(180px,26vw))}
+.bingkai{aspect-ratio:16/9;background:#000;border:6px solid #fff;border-radius:14px;overflow:hidden;box-shadow:var(--bayang)}
+.bingkai iframe{width:100%;height:100%;border:0;display:block}
+.bingkai video{width:100%;height:100%;display:block;object-fit:cover;background:#000}
+.info-lagu{text-align:center;margin-top:20px}
+.info-lagu h3{font-family:var(--serif);font-size:1.7rem;color:var(--rose)}
+.info-lagu p{color:#7a3a55}
+.pesan{width:min(640px,100%);padding:26px 30px;margin-top:26px;font-family:var(--serif);font-size:1.28rem;line-height:1.75;text-align:center}
+.pesan em{color:var(--rose)}
+
+/* ===== RESPONSIF ===== */
+@media(max-width:860px){
+  .deret{grid-template-columns:1fr;max-width:420px}
+  .bunga-grid{grid-template-columns:1fr}
+  .buket{max-width:360px;margin:0 auto}
+  .nav div{gap:14px}
+}
+@media(max-width:520px){.arti{grid-template-columns:1fr}.nav .merek{font-size:1.5rem}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="bloom" viewBox="-50 -50 100 100">
+      <g fill="var(--p1,#f4a6c0)" stroke="rgba(140,30,80,.3)" stroke-width="1">
+        <ellipse cy="-28" rx="15" ry="21"/><ellipse cy="-28" rx="15" ry="21" transform="rotate(45)"/>
+        <ellipse cy="-28" rx="15" ry="21" transform="rotate(90)"/><ellipse cy="-28" rx="15" ry="21" transform="rotate(135)"/>
+        <ellipse cy="-28" rx="15" ry="21" transform="rotate(180)"/><ellipse cy="-28" rx="15" ry="21" transform="rotate(225)"/>
+        <ellipse cy="-28" rx="15" ry="21" transform="rotate(270)"/><ellipse cy="-28" rx="15" ry="21" transform="rotate(315)"/>
+      </g>
+      <g fill="var(--p2,#e87aa0)" stroke="rgba(140,30,80,.3)" stroke-width="1">
+        <ellipse cy="-15" rx="10" ry="14" transform="rotate(22)"/><ellipse cy="-15" rx="10" ry="14" transform="rotate(82)"/>
+        <ellipse cy="-15" rx="10" ry="14" transform="rotate(142)"/><ellipse cy="-15" rx="10" ry="14" transform="rotate(202)"/>
+        <ellipse cy="-15" rx="10" ry="14" transform="rotate(262)"/><ellipse cy="-15" rx="10" ry="14" transform="rotate(322)"/>
+      </g>
+      <circle r="7" fill="#f7d56b" stroke="#c9962a" stroke-width="1.5"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- Foto yang jatuh dari atas (foto (1).jpg sampai foto (12).jpg) -->
+<div class="hujan" aria-hidden="true">
+  <div class="jatuh"><div class="foto-j"></div></div>
+  <div class="jatuh"><div class="foto-j"></div></div>
+  <div class="jatuh"><div class="foto-j"></div></div>
+  <div class="jatuh"><div class="foto-j"></div></div>
+  <div class="jatuh"><div class="foto-j"></div></div>
+  <div class="jatuh"><div class="foto-j"></div></div>
+  <div class="jatuh"><div class="foto-j"></div></div>
+  <div class="jatuh"><div class="foto-j"></div></div>
+  <div class="jatuh"><div class="foto-j"></div></div>
+  <div class="jatuh"><div class="foto-j"></div></div>
+  <div class="jatuh"><div class="foto-j"></div></div>
+  <div class="jatuh"><div class="foto-j"></div></div>
+</div>
+
+<header class="nav">
+  <a class="merek" href="#home">Two Months</a>
+  <div><a href="#home">Beranda</a><a href="#pilih">Hadiah</a></div>
+</header>
+
+<!-- ============ BERANDA ============ -->
+<section class="page" id="home">
+  <div class="hero kaca">
+    <svg class="hati" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.3C.9 8.2 3 5 6.2 5c2 0 3.3 1 3.8 2.1h4C14.5 6 15.8 5 17.8 5 21 5 23.1 8.2 21.6 11.7 19.5 16.4 12 21 12 21z"/></svg>
+    <p class="salam">Untuk kamu, yang paling kusayang</p>
+    <h1><span class="s1">Two Month</span><span class="s2">Anniversary</span></h1>
+    <p class="isi">Dua bulan bersamamu, dan kamu adalah anugerah terindah yang tuhan berikan kepadaku</p>
+    <a class="tombol" href="#pilih">Buka </a>
+  </div>
+</section>
+
+<!-- ============ PILIHAN ============ -->
+<section class="page" id="pilih">
+  <h2 class="judul-halaman">Untukmu</h2>
+  <p class="sub">Pilih salah satu, semuanya kusiapkan dengan sepenuh hati.</p>
+  <nav class="deret" aria-label="Pilih hadiah">
+    <a class="kartu-pilih kaca" href="#surat">
+      <svg viewBox="0 0 160 130" aria-hidden="true">
+        <rect x="14" y="26" width="132" height="90" rx="8" fill="#fff"/>
+        <path d="M14 34 L80 82 L146 34" fill="none" stroke="#f4a6c0" stroke-width="5" stroke-linejoin="round"/>
+        <circle cx="80" cy="82" r="14" fill="#ec6a9a"/>
+        <path d="M80 90c-8-5-12-10-7-14 3-2 6 0 7 2 1-2 4-4 7-2 5 4 1 9-7 14z" fill="#fff"/>
+      </svg>
+      <h3>Surat</h3><p>Beberapa kata yang ingin kusampaikan langsung dari hatiku.</p>
+    </a>
+    <a class="kartu-pilih kaca" href="#bunga">
+      <svg viewBox="0 0 160 160" aria-hidden="true">
+        <path d="M80 100 L66 150 M80 100 L94 150" stroke="#6b9a55" stroke-width="5"/>
+        <path d="M34 62 L126 62 L98 150 L62 150 Z" fill="#fde2ec" stroke="#f4a6c0" stroke-width="2"/>
+        <use href="#bloom" x="50" y="10" width="60" height="60" style="--p1:#f8c3d5;--p2:#ee93b2"/>
+        <use href="#bloom" x="20" y="34" width="54" height="54" style="--p1:#f4a6c0;--p2:#e87aa0"/>
+        <use href="#bloom" x="86" y="34" width="54" height="54" style="--p1:#f4a6c0;--p2:#e87aa0"/>
+      </svg>
+      <h3>Bunga</h3><p>Setiap kelopak punya arti yang ingin kubisikkan padamu.</p>
+    </a>
+    <a class="kartu-pilih kaca" href="#lagu">
+      <svg viewBox="0 0 160 160" aria-hidden="true">
+        <circle cx="80" cy="80" r="66" fill="#3a1a2a"/>
+        <circle cx="80" cy="80" r="50" fill="none" stroke="#5a2a42" stroke-width="2"/>
+        <circle cx="80" cy="80" r="36" fill="none" stroke="#5a2a42" stroke-width="2"/>
+        <circle cx="80" cy="80" r="22" fill="#f48fb1"/><circle cx="80" cy="80" r="4" fill="#4a1530"/>
+      </svg>
+      <h3>Sebuah lagu</h3><p>Lagu yang selalu mengingatkanku padamu.</p>
+    </a>
+  </nav>
+</section>
+
+<!-- ============ SURAT ============ -->
+<section class="page" id="surat">
+  <article class="kertas">
+    <h3>Untuk kamu, yang kusayang,</h3>
+    <p>Aku harap kamu tahu betapa berartinya kamu bagiku, bukan hanya karena kamu pacarku, tapi karena sosok dirimu. Aku menyukai caramu peduli, caramu mengerti aku, caramu membuatku tersenyum, bahkan hal-hal kecil yang kamu lakukan tanpa sadar betapa besar artinya bagiku.</p>
+    <p>Dua bulan ini, kehadiranmu tidak akan pernah kuanggap biasa. Kamu sudah menjadi bagian penting dari hari-hariku, pikiranku, dan hatiku. Aku sungguh bersyukur bisa memanggilmu milikku.</p>
+    <p>Aku tahu tidak semua hari akan sempurna, tapi aku mau memilihmu di setiap harinya. Aku ingin ada di sampingmu saat kamu bahagia, saat kamu lelah, saat kamu sedang berjuang, dan saat kamu hanya butuh seseorang yang mengingatkan bahwa semuanya akan baik-baik saja.</p>
+    <p>Terima kasih sudah bertahan, sudah mengerti, dan sudah terus memilih kita. Apa pun yang datang nanti, semoga kita selalu menemukan jalan pulang satu sama lain.</p>
+    <p class="ttd">Selamat dua bulan, sayang ♥</p>
+  </article>
+  <div class="deret-foto">
+    <div class="polaroid p1"><i></i></div><div class="polaroid p2"><i></i></div><div class="polaroid p3"><i></i></div>
+  </div>
+  <a class="tombol lembut kembali" href="#pilih">← Kembali</a>
+</section>
+
+<!-- ============ BUNGA ============ -->
+<section class="page" id="bunga">
+  <span class="kelopak"></span><span class="kelopak"></span><span class="kelopak"></span><span class="kelopak"></span>
+  <h2 class="judul-halaman">Bunga untukmu</h2>
+  <p class="sub">Enam bunga pink, enam cara untuk mengatakan aku sayang kamu.</p>
+  <div class="bunga-grid">
+    <div class="buket kaca">
+      <svg viewBox="0 0 300 350" role="img" aria-label="Buket bunga pink">
+        <g stroke="#5f8a45" stroke-width="5" stroke-linecap="round" fill="none">
+          <path d="M150 250 L150 120"/><path d="M150 250 L96 108"/><path d="M150 250 L204 108"/><path d="M150 250 L108 170"/><path d="M150 250 L192 170"/><path d="M150 250 L150 60"/>
+        </g>
+        <path d="M60 120 L240 120 L196 290 L104 290 Z" fill="#fff" opacity=".6"/>
+        <ellipse cx="82" cy="150" rx="26" ry="11" fill="#6f9a52" transform="rotate(-35 82 150)"/>
+        <ellipse cx="218" cy="150" rx="26" ry="11" fill="#6f9a52" transform="rotate(35 218 150)"/>
+        <use href="#bloom" x="106" y="14" width="88" height="88" style="--p1:#f8c3d5;--p2:#ee93b2"/>
+        <use href="#bloom" x="50" y="64" width="90" height="90" style="--p1:#f4a6c0;--p2:#e87aa0"/>
+        <use href="#bloom" x="160" y="64" width="90" height="90" style="--p1:#f4a6c0;--p2:#e87aa0"/>
+        <use href="#bloom" x="100" y="76" width="100" height="100" style="--p1:#f9b4cb;--p2:#ec86a9"/>
+        <use href="#bloom" x="64" y="126" width="76" height="76" style="--p1:#fbd0de;--p2:#f29bb8"/>
+        <use href="#bloom" x="160" y="126" width="76" height="76" style="--p1:#fbd0de;--p2:#f29bb8"/>
+        <path d="M70 168 L230 168 L172 318 L128 318 Z" fill="#fff4f8" stroke="#f4a6c0" stroke-width="2"/>
+        <path d="M70 168 L150 205 L230 168" fill="#fde2ec"/>
+        <g fill="#c2476f"><path d="M150 232 C118 205 108 250 150 242 C192 250 182 205 150 232Z"/><circle cx="150" cy="238" r="8" fill="#a73559"/>
+          <path d="M146 244 L124 296 L142 288Z"/><path d="M154 244 L176 296 L158 288Z"/></g>
+      </svg>
+      <p class="judul">Flowers for you</p>
+    </div>
+    <div class="arti">
+      <div class="arti-item kaca"><svg viewBox="-50 -50 100 100" style="--p1:#f4a6c0;--p2:#e87aa0"><use href="#bloom"/></svg><div><h4>Mawar Pink</h4><p>Lambang kasih sayang yang lembut. Seburuk apa pun hariku, kamu selalu membuatku tersenyum.</p></div></div>
+      <div class="arti-item kaca"><svg viewBox="-50 -50 100 100" style="--p1:#f8c3d5;--p2:#ee93b2"><use href="#bloom"/></svg><div><h4>Tulip Pink</h4><p>Lambang perhatian dan cinta yang tulus. Caramu peduli dan bertahan sangat berarti bagiku.</p></div></div>
+      <div class="arti-item kaca"><svg viewBox="-50 -50 100 100" style="--p1:#f9b4cb;--p2:#ec86a9"><use href="#bloom"/></svg><div><h4>Peoni Pink</h4><p>Lambang romansa dan kebahagiaan. Setiap momen bersamamu menjadi kenangan yang kusimpan.</p></div></div>
+      <div class="arti-item kaca"><svg viewBox="-50 -50 100 100" style="--p1:#fbd0de;--p2:#f29bb8"><use href="#bloom"/></svg><div><h4>Sakura</h4><p>Lambang keindahan hal-hal kecil. Bahkan momen terkecil bersamamu sangat berarti.</p></div></div>
+      <div class="arti-item kaca"><svg viewBox="-50 -50 100 100" style="--p1:#f4a6c0;--p2:#e87aa0"><use href="#bloom"/></svg><div><h4>Gerbera Pink</h4><p>Lambang keceriaan. Cintamu membuat hidup terasa lebih bermakna dan indah.</p></div></div>
+      <div class="arti-item kaca"><svg viewBox="-50 -50 100 100" style="--p1:#f8c3d5;--p2:#ee93b2"><use href="#bloom"/></svg><div><h4>Anyelir Pink</h4><p>Lambang rasa syukur. Hanya dengan kehadiranmu, semuanya terasa lebih baik.</p></div></div>
+    </div>
+  </div>
+  <a class="tombol lembut kembali" href="#pilih">← Kembali</a>
+</section>
+
+<!-- ============ LAGU ============ -->
+<section class="page" id="lagu">
+  <h2 class="judul-halaman">Lagu untukmu</h2>
+  <p class="sub">Lagu yang selalu mengingatkanku padamu.</p>
+  <div class="panggung">
+    <div class="piringan" aria-hidden="true"></div>
+    <div class="video">
+      <div class="bingkai">
+        <video controls playsinline preload="metadata">
+          <source src="just%20the%20way%20you%20are.mp4" type="video/mp4">
+          Browser kamu tidak mendukung video.
+        </video>
+      </div>
+    </div>
+  </div>
+  <div class="info-lagu">
+    <h3>Just the Way You Are</h3>
+    <p>Bruno Mars</p>
+  </div>
+  <p class="pesan kaca">Sayang, aku menyukaimu <em>apa adanya</em>. Tidak ada yang perlu kamu ubah. Senyummu, caramu bercerita, bahkan saat kamu sedang lelah, semuanya adalah alasan aku jatuh hati. Lagu ini kupilih karena kamu memang sudah cukup, dan selalu cukup, bagiku. ♡</p>
+  <a class="tombol lembut kembali" href="#pilih">← Kembali</a>
+</section>
+
+</body>
+</html>
